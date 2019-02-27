@@ -16,7 +16,7 @@ class Synchronizer:
         self.load_creds()
         self.load_service()
         self.db = Database()
-        self.db.create_all()
+        self.db.create_schema()
 
     def load_creds(self):
         if os.path.exists('token.pickle'):

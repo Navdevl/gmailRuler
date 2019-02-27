@@ -9,7 +9,7 @@ class Database():
     Session.configure(bind=self.engine)  
     self.session = Session()
 
-  def create_all(self):
+  def create_schema(self):
     Base.metadata.create_all(bind=self.engine)
 
   def create_email(self, kwargs):
