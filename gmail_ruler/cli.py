@@ -1,6 +1,6 @@
 import click
 from server import app
-from core import Synchronizer
+from core.synchronizer import Synchronizer
 
 @click.group()
 def main():

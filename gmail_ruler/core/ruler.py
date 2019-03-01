@@ -8,6 +8,10 @@ class Ruler:
     self.db.create_schema()
     self.query = self.db.session.query(Email)
 
+  def apply(self, **kwargs):
+    print(kwargs)
+    pass
+
   def filter(self, rule_type, rule_value):
     if rule_type == "contains":
       emails = self.contains(self.query, rule_value).all()
