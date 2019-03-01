@@ -10,6 +10,3 @@ class HelloWorld(Resource):
     return json_data
 
 api.add_resource(HelloWorld, '/')
-
-if __name__ == '__main__':
-  app.run(debug=True)

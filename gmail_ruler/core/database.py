@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model.email import *
+from core.model.email import *
 
 class Database():
   def __init__(self):
