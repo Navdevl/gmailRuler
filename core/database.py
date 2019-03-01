@@ -6,7 +6,6 @@ class Database():
   def __init__(self):
     self.engine = create_engine('sqlite:///emails.db', echo=True)
     Session = sessionmaker(bind=self.engine)
-    Session.configure(bind=self.engine)  
     self.session = Session()
 
   def create_schema(self):

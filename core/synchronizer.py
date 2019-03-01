@@ -8,7 +8,10 @@ from database import *
 from utils import *
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly',
+          'https://www.googleapis.com/auth/gmail.labels',
+          'https://www.googleapis.com/auth/gmail.modify'
+          ]
 
 class Synchronizer:
     def __init__(self):
@@ -59,7 +62,17 @@ class Synchronizer:
                                  "message_id": message_id,
                                  "received_at": received_at
                                  })
-            # break
+    def action(self, message_ids):
+        print(self.service.users().labels().list(userId='me').execute())
+        body = {
+            "addLabelIds": ["INBOX"],
+            "removeLabelIds": ["UNREAD"],
+            "ids": message_ids
+        }
+
+        self.service.users().messages().batchModify(userId='me', body=body).execute()
+        # print(self.service.users().messages().get(userId='me', id="1692806686b9b864").execute())
 
 synchronizer = Synchronizer()
-synchronizer.load_emails()
+# synchronizer.load_emails()
+synchronizer.action(["1692806686b9b864"])

@@ -13,3 +13,6 @@ class Email(Base):
   to_email = Column(String)
   subject = Column(Text)
   received_at = Column(DateTime)
+
+  def __repr__(self):
+    return "{0}: {1}".format(self.message_id, self.subject)
