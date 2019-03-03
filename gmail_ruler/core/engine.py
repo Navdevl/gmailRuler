@@ -13,8 +13,8 @@ class Engine:
     self.load_service()
 
   def load_creds(self):
-    if os.path.exists('token.pickle'):
-      with open('token.pickle', 'rb') as token:
+    if os.path.exists(config.PICKLED_CONFIG):
+      with open(config.PICKLED_CONFIG, 'rb') as token:
         self.creds = pickle.load(token)
 
     # If there are no (valid) credentials available, let the user log in.
@@ -25,7 +25,7 @@ class Engine:
         flow = InstalledAppFlow.from_client_secrets_file(config.CREDENTIALS_JSON, config.ENGINE_SCOPES)
         self.creds = flow.run_local_server()
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
+        with open(config.PICKLED_CONFIG, 'wb') as token:
           pickle.dump(self.creds, token)
 
   def load_service(self):

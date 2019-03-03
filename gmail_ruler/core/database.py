@@ -5,7 +5,7 @@ from core import config
 
 class Database():
   def __init__(self):
-    self.engine = create_engine(config.DB_CONF, echo=False)
+    self.engine = create_engine(config.DB_URI, echo=False)
     Session = sessionmaker(bind=self.engine)
     self.session = Session()
 
