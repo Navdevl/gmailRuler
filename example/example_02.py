@@ -1,21 +1,14 @@
 import requests
 import json
 
-# This is an example to select 
-
 payload = {
   "rule": {
     "type": "all",
     "list": [ 
       {
-        "entity": "from_email",
-        "condition": "equal",
-        "value": "pradeek@happyfox.recruiterbox.com"
-      },
-      {
-        "entity": "from_email",
-        "condition": "contains",
-        "value": "sharon"
+        "entity": "received_at",
+        "condition": "greater_than",
+        "value": 30
       }
     ]
   },
@@ -27,6 +20,5 @@ payload = {
     ]
   }
 }
-
 response = requests.post('http://localhost:5000', json=payload)
 print(json.loads(response.content))

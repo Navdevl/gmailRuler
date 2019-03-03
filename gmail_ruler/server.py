@@ -9,7 +9,7 @@ ruler = Ruler()
 class RulerServer(Resource):
   def post(self):
     json_data = request.get_json(force=True)
-    ruler.apply(**json_data)
-    return json_data
+    count = ruler.apply(**json_data)
+    return {"emails_updated": count}
 
 api.add_resource(RulerServer, '/')
