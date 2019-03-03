@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+
+"""
+This is the trivial module among all other core modules.
+This provides the filter and execute action functionalities.
+
+filter() and execute() functions makes the beautiful moves in the
+whole python package.
+"""
+
 from core.model.email import Email
 from core.database import Database
 from core.engine import Engine

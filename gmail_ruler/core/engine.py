@@ -1,4 +1,12 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
+
+"""
+This model acts as an engine that provides the service attribute which has
+the ability to communicate with gmail's APIs. 
+
+This is referenced from the example quoted in the following URL.
+https://developers.google.com/gmail/api/quickstart/python
+"""
 import pickle
 import os.path
 from googleapiclient.discovery import build

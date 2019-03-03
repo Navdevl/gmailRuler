@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from core.engine import Engine
 from core.database import Database
 from core.utils import *

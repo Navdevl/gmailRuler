@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+"""
+This module has the basic methods in DB controls.
+Currently, it supports only the schema creation and the email model creation.
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from core.model.email import *
