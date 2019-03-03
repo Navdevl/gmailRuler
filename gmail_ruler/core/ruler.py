@@ -17,15 +17,19 @@ class Ruler:
     pass
 
   def filter(self, entity, condition, value):
-    # if condition == "contains":
+    if condition == "contains":
+      query = self.contains(entity, value)
+      print(query)
       # emails = self.contains(self.query, value).all()
       # print(emails)
     # else:
       # emails = self.contains(self.query, value, True).all()
       # print(emails)
+    return query
 
-  def contains(self, query, string, neg=False):
-    
+  def contains(self, entity, string, neg=False):
+    query_entity = getattr(Email, entity)
+    return self.query(query_entity.like("%{0}%".format(string)))
     # if neg:
       # return query.filter(not_(Email.subject.like("%{0}%".format(string))))
     # else:
@@ -34,7 +38,6 @@ class Ruler:
 
 # ruler = Ruler()
 # ruler.filter("contains", "GET")
-print(getattr(Email, 'subject'))
 # print((Email.subject.like("%GET"))&((Email.subject.like("%GET"))))
 
 # OPERATORS = {
