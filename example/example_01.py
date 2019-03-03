@@ -1,7 +1,8 @@
 import requests
 import json
 
-# This is an example to select 
+# This is an example to select emails from a certain person and mark it read.
+# It is assumed that the client sends the action's value as READ if it is operated to "Read all filtered messages"
 
 payload = {
   "rule": {
@@ -11,11 +12,6 @@ payload = {
         "entity": "from_email",
         "condition": "equal",
         "value": "pradeek@happyfox.recruiterbox.com"
-      },
-      {
-        "entity": "from_email",
-        "condition": "contains",
-        "value": "sharon"
       }
     ]
   },

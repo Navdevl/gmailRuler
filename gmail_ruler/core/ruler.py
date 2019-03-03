@@ -94,7 +94,6 @@ class Ruler:
 
   def less_than(self, entity, value, neg=False):
     query_entity = getattr(Email, entity)
-    print(isinstance(query_entity.type, DateTime))
     if isinstance(query_entity.type, DateTime):
       current_time = datetime.datetime.utcnow()
       query_datetime = current_time - datetime.timedelta(days=value)
