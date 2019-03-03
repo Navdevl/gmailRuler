@@ -1,13 +1,15 @@
 import os
 
-DATA_DIR_NAME = 'data'
 DB_NAME = 'emails.db'
 
 CUR_DIR = os.getcwd()
-DATA_DIR = os.path.join(CUR_DIR, DATA_DIR_NAME)
+DATA_DIR = os.path.join(CUR_DIR, 'data')
 
-DB_URI = os.path.join(DATA_DIR, DB_NAME)
-DB_CONF="sqlite:///{0}".format(DB_URI)
+DB_FILE = os.path.join(DATA_DIR, 'DB_NAME')
+DB_URI="sqlite:///{0}".format(DB_FILE)
+
+CREDENTIALS_JSON = os.path.join(DATA_DIR, 'credentials.json')
+PICKLED_CONFIG = os.path.join(DATA_DIR, 'token.pickle')
 
 ENGINE_SCOPES = ['https://www.googleapis.com/auth/gmail.readonly',
           'https://www.googleapis.com/auth/gmail.labels',

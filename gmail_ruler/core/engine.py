@@ -22,7 +22,7 @@ class Engine:
       if self.creds and self.creds.expired and self.creds.refresh_token:
         self.creds.refresh(Request())
       else:
-        flow = InstalledAppFlow.from_client_secrets_file('credentials.json', config.ENGINE_SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file(config.CREDENTIALS_JSON, config.ENGINE_SCOPES)
         self.creds = flow.run_local_server()
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
