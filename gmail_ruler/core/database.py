@@ -1,10 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from core.model.email import *
+from core import config
 
 class Database():
   def __init__(self):
-    self.engine = create_engine('sqlite:///emails.db', echo=True)
+    self.engine = create_engine(config.DB_CONF, echo=False)
     Session = sessionmaker(bind=self.engine)
     self.session = Session()
 

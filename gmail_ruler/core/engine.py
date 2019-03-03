@@ -4,12 +4,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-
-# If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly',
-          'https://www.googleapis.com/auth/gmail.labels',
-          'https://www.googleapis.com/auth/gmail.modify'
-          ]
+from core import config
 
 class Engine:
   def __init__(self):
@@ -27,7 +22,7 @@ class Engine:
       if self.creds and self.creds.expired and self.creds.refresh_token:
         self.creds.refresh(Request())
       else:
-        flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file('credentials.json', config.ENGINE_SCOPES)
         self.creds = flow.run_local_server()
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
