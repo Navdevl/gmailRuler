@@ -1,5 +1,5 @@
-from model.email import *
-from database import *
+from core.model.email import *
+from core.database import *
 from sqlalchemy import not_
 
 class Ruler:
@@ -8,28 +8,34 @@ class Ruler:
     self.db.create_schema()
     self.query = self.db.session.query(Email)
 
-  def apply(self, **kwargs):
-    print(kwargs)
+  def apply(self, rule, action):
+    rule_type = rule['type']
+    rule_list = rule['list']
+
+    for rule_element in rule_list:
+      self.filter(**rule_element)
     pass
 
-  def filter(self, rule_type, rule_value):
-    if rule_type == "contains":
-      emails = self.contains(self.query, rule_value).all()
-      print(emails)
-    else:
-      emails = self.contains(self.query, rule_value, True).all()
-      print(emails)
+  def filter(self, entity, condition, value):
+    # if condition == "contains":
+      # emails = self.contains(self.query, value).all()
+      # print(emails)
+    # else:
+      # emails = self.contains(self.query, value, True).all()
+      # print(emails)
 
   def contains(self, query, string, neg=False):
-    if neg:
-      return query.filter(not_(Email.subject.like("%{0}%".format(string))))
-      return query.filter(Email.subject.like("%{0}%".format(string)))
-    else:
-      return query.filter(Email.subject.like("%{0}%".format(string)))
+    
+    # if neg:
+      # return query.filter(not_(Email.subject.like("%{0}%".format(string))))
+    # else:
+      # return query.filter(Email.subject.like("%{0}%".format(string)))
 
 
-ruler = Ruler()
-ruler.filter("contains", "GET")
+# ruler = Ruler()
+# ruler.filter("contains", "GET")
+print(getattr(Email, 'subject'))
+# print((Email.subject.like("%GET"))&((Email.subject.like("%GET"))))
 
 # OPERATORS = {
 #     'is_null': lambda f: f.is_(None),

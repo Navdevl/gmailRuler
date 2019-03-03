@@ -15,7 +15,7 @@ def initialize():
 @main.command()
 def server():
   click.echo('Starting the server')
-  app.run()
+  app.run(debug=True)
 
 if __name__ == '__main__':
   main()
