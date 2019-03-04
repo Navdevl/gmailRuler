@@ -39,7 +39,10 @@ class Ruler:
     """
 
     self.filter(rule)
-    self.execute(action)
+
+    # Execute only if there are responses returned.
+    if (self.response.count() > 0):
+      self.execute(action)
     return len(self.response.all())
 
   def filter(self, rule):
