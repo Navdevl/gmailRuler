@@ -22,3 +22,13 @@ Now, take some nap while the emails synchronize with your current database.
 1. Run `python cli.py server` to start the flask server. 
 2. There is only one endpoint that serves the core functionality.
 3. You can find few examples in the example folder that has detailed comments and a working functions using the requests library.
+
+## Few changes.
+There are few changes in the names given to the Email model's attributes. 
+The attributes are:
+1. from_email
+2. to_email
+3. subject
+4. content
+5. received_at
+
