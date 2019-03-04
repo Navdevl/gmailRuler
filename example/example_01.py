@@ -1,8 +1,9 @@
 import requests
 import json
 
-# This is an example to select emails from a certain person and mark it read.
-# It is assumed that the client sends the action's value as READ if it is operated to "Read all filtered messages"
+# This is an example to do the following functionality.
+# Filer by from_email that equals to specific email ID.
+# And mark all those filtered emails to READ.
 
 payload = {
   "rule": {

@@ -16,9 +16,11 @@ class Database():
     self.session = Session()
 
   def create_schema(self):
+    # To initialize the schema if not present.
     Base.metadata.create_all(bind=self.engine)
 
   def create_email(self, kwargs):
+    # This takes in the keyworded arguments and creates the email in the database
     email = Email(**kwargs)
     self.session.add(email)
     self.session.commit()

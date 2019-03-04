@@ -1,21 +1,30 @@
 import requests
 import json
 
+# This is an example to do the following functionality.
+# Filer emails that contains a specific keyword either in the subject or in the content
+# And mark all those filtered emails to UNREAD.
+
 payload = {
   "rule": {
-    "type": "all",
+    "type": "any",
     "list": [ 
       {
-        "entity": "received_at",
-        "condition": "greater_than",
-        "value": 30
+        "entity": "subject",
+        "condition": "contains",
+        "value": "keyword"
+      },
+      {
+        "entity": "content",
+        "condition": "contains",
+        "value": "keyword"
       }
     ]
   },
   "action": {
     "list": [
       {
-        "value": "READ"
+        "value": "UNREAD"
       }
     ]
   }
