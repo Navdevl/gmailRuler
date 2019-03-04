@@ -37,11 +37,14 @@ class Synchronizer:
       message_id = message['id']
       result = self.service.users().messages().get(userId='me', id=message_id).execute()
       payload = result['payload']
+      print(payload)
+      exit()
 
       from_email = clean_email(value_from_dict_array(payload["headers"], "From"))
       to_email = clean_email(value_from_dict_array(payload["headers"], "To"))
       subject = value_from_dict_array(payload["headers"], "Subject")
       received_at = convert_string_to_datetime(value_from_dict_array(payload["headers"], "Date"))
+      content = convert_base64_to_string()
 
       self.database.create_email({"from_email": from_email, 
                            "to_email": to_email, 
